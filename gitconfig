@@ -1,0 +1,21 @@
+[user]
+	name  = andrew-kamenchuk
+	email = andrew.kamenchuk@gmail.com
+
+[core]
+	excludesfile = ~/.gitignore-global
+
+[merge]
+	conflictstyle=diff3
+
+[push]
+	default=matching
+
+[diff]
+	tool = gvimdiff
+
+[apply]
+	whitespace = fix
+
+[help]
+	autocorrect = 10
