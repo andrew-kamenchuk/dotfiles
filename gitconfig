@@ -18,4 +18,4 @@
 	whitespace = fix
 
 [help]
-	autocorrect = 10
+	autocorrect = 50

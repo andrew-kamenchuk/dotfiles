@@ -17,8 +17,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc.vim', {'build': 'make'}
 
 NeoBundle 'Shougo/unite.vim'
+    let g:unite_enable_start_insert = 1
+    let g:unite_split_rule = "botright"
+    let g:unite_winheight = 10
+    let g:unite_candidate_icon="▷"
 
 NeoBundle 'tsukkee/unite-tag'
+ 
+NeoBundle 'freitass/todo.txt-vim'
 
 " <leader>c<space>, <leader>cm, <leader>cs, <leader>cA, <leader>cu
 NeoBundle 'scrooloose/nerdcommenter'
@@ -30,7 +36,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
     let g:indent_guides_guide_size  = 2
 
 NeoBundle 'mhinz/vim-startify'
-    let g:startify_bookmarks = ['~/.vimrc', '~/.zshrc', '~/Documents/Grive/todo/todo.txt']
+    let g:startify_bookmarks = ['~/.vimrc', '~/.vim/plugins.vim', '~/.zshrc', '~/Documents/Grive/todo/todo.txt']
 
 NeoBundle "w0ng/vim-hybrid"
 NeoBundle "endel/vim-github-colorscheme"
@@ -87,7 +93,7 @@ NeoBundle 'honza/vim-snippets'
 NeoBundle 'sheerun/vim-polyglot'
 
 " completion
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Valloric/YouCompleteMe', {'build': './install.py --clang-completer'}
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:ycm_auto_trigger = 1
     let g:ycm_autoclose_preview_window_after_completion = 1
@@ -143,7 +149,6 @@ NeoBundle 'airblade/vim-gitgutter'
 
 NeoBundle 'mhinz/vim-signify'
     let g:signify_vcs_list = ['svn']
-
 
 call neobundle#end()
 
