@@ -150,6 +150,10 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'mhinz/vim-signify'
     let g:signify_vcs_list = ['svn']
 
+" :Gist
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/gist-vim'
+
 call neobundle#end()
 
 filetype plugin indent on
