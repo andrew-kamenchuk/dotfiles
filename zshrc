@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git svn composer dirhistory tmux web-search cp catimg jump z extract)
 plugins+=(zsh-syntax-highlighting mvn history-substring-search alias-tips vagrant)
-plugins+=(node npm nvm)
+plugins+=(node npm nvm sudo)
 
 
 # User configuration
@@ -108,6 +108,7 @@ alias zshrc='gvim ~/.zshrc'
 alias gdrive='(cd ~/Documents/Grive && grive)'
 alias starwars='telnet towel.blinkenlights.nl'
 alias ctags-php='ctags -R --languages=php --fields=+aimlS'
+alias chrome='google-chrome'
 
 export NVM_DIR="/home/andrew/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -22,3 +22,5 @@
 
 [github]
     user = andrew-kamenchuk
+[alias]
+    lg = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit

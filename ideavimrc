@@ -1,0 +1,17 @@
+set clipboard=unnamedplus
+
+set number relativenumber
+
+set backspace=indent,eol,start
+
+set encoding=utf-8 nobomb
+set fileencoding=utf-8
+set fileencodings=utf-8
+
+set list
+set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
+
+" search:
+set nohlsearch "no highlight search
+set incsearch  " but hi as typing
+set ignorecase smartcase
