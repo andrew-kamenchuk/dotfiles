@@ -107,7 +107,7 @@ alias vimrc='gvim ~/.vimrc'
 alias zshrc='gvim ~/.zshrc'
 alias gdrive='(cd ~/Documents/Grive && grive)'
 alias starwars='telnet towel.blinkenlights.nl'
-alias ctags-php='ctags -R --languages=php --fields=+aimlS'
+alias ctags-php='ctags -R --languages=php --fields=+aimlS -f .tags'
 alias chrome='google-chrome'
 
 export NVM_DIR="/home/andrew/.nvm"

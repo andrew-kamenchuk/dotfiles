@@ -176,7 +176,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " programming related 
-set tags+=./tags;/ " which tags files CTRL-] will find 
+set tags+=./.tags;/ " which tags files CTRL-] will find 
 set completeopt=longest,menuone " ,preview
 
 set shell=/usr/bin/env\ bash\ --login
