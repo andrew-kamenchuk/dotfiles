@@ -1,0 +1,18 @@
+--exclude=.git
+--exclude=log
+--exclude=vendor/composer
+--exclude=*.min.js
+--exclude=*.min.css
+--exclude=*.map
+
+-f .tags
+
+--fields=+a
+--fields=+i
+--fields=+m
+--fields=+l
+--fields=+n
+--fields=+s
+--fields=+S
+
+--recurse
