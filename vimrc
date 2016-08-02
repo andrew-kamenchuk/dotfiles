@@ -72,9 +72,23 @@ set fileencodings=utf-8
 set backup
 set undofile
 
-set backupdir=~/.vim/.data/undo
-set undodir=~/.vim/.data/backup
-set directory=~/.vim/.data/swap
+set backupdir=~/.vim/data/backup
+
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir, "p")
+endif
+
+set undodir=~/.vim/data/undo
+
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p")
+endif
+
+set directory=~/.vim/data/swap
+
+if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+endif
 
 set list
 set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
@@ -166,7 +180,7 @@ set statusline+=\ col:%c "column nu
 set statusline+=\ ch:0x%04B "char under cursor (hex)
 set statusline+=\ bytes:%O "bytes
 
-set autochdir
+" set autochdir
 
 set ttimeout
 set ttimeoutlen=100
