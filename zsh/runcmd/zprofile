@@ -1,0 +1,22 @@
+# zprofile
+
+# EDITORS:
+
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+
+# Language
+
+if [[ -z "$LANG" ]]; then
+  export LANG='en_US.UTF-8'
+fi
+
+# Path
+path=(
+    $HOME/.bin
+    $path
+)
+
+# JAVA_HOME latest jdk available
+export JAVA_HOME=`ls -d /usr/lib/jvm/* | grep '/jdk' | sort -r | head -1`
