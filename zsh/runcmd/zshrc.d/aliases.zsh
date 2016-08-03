@@ -10,8 +10,9 @@ alias rgrep="grep -r"
 alias vimrc="gvim $HOME/.vimrc 2>/dev/null"
 alias zshrc="gvim $ZSHRC 2>/dev/null"
 
-# tags
-alias jstags="find . -type f -iregex '.*\.js$' -exec jsctags {} -f \; | sed '/^$/d' | sort > .tags"
+# z & fzf
+zz() { [ $# -gt 0 ] && _z $* || cd "$(_z -l 2>&1 | sed "s/^[0-9,.]* *//" | fzf-tmux --tac +s)" }
+compctl -U -K _z_zsh_tab_completion zz
 
 #
 alias chrome="google-chrome"

@@ -14,6 +14,5 @@ setopt local_options prompt_subst
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd vcs_info
 
-
 PROMPT="%(?:%F{green}:%F{red})➜ %f "'${vcs_info_msg_0_}'" %B%F{cyan}%1~%f%b %% "
 RPROMPT="[%3d] ~ [%T] [%n]"
