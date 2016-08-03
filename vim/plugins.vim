@@ -45,7 +45,6 @@ call dein#add("mhinz/vim-startify")
 
 call dein#add("w0ng/vim-hybrid")
 call dein#add("endel/vim-github-colorscheme")
-call dein#add("dracula/vim")
 
 call dein#add("godlygeek/tabular")
 
@@ -166,8 +165,6 @@ call dein#add("mattn/webapi-vim")
 call dein#add("mattn/gist-vim")
 
 call dein#end()
-
-filetype plugin indent on
 
 if dein#check_install()
     call dein#install()

@@ -7,9 +7,21 @@ augroup END
 
 source ~/.vim/plugins.vim
 
+filetype plugin indent on
+
 syntax on
 
 set background=dark
+
+try
+    colorscheme hybrid
+catch
+    if has("gui_running")
+        colorscheme desert
+    else
+        colorscheme default
+    endif
+endtry
 
 set autoread
 
