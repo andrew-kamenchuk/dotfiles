@@ -18,11 +18,15 @@ sync-ebooks() {
     for device in $~devices; do
         if [ ! -d "$device/Library" ]; then
             echo
-            read -q "REPLY?There is no Library on '${device:t}'. Create? (y/[n]) "
-            echo
-            [[ $REPLY =~ ^[yY]$ ]] || continue
+            ask "There is no Library on '${device:t}'. Create?" || continue
         fi
         rsync $* -r --verbose --progress --delete --size-only --protect-args --exclude=.*/ \
             $HOME/Documents/Library/ $device/Library
     done
+}
+
+ask() {
+    read -q "REPLAY?$1 (y/[n]) "
+    echo
+    [[ $REPLAY =~ ^[yY]$ ]]
 }
