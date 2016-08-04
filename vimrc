@@ -5,7 +5,7 @@ augroup vimrc
   autocmd!
 augroup END
 
-source ~/.vim/plugins.vim
+source $HOME/.vim/plugins.vim
 
 filetype plugin indent on
 
@@ -84,19 +84,19 @@ set fileencodings=utf-8
 set backup
 set undofile
 
-set backupdir=~/.vim/data/backup
+set backupdir=$HOME/.vim/data/backup
 
 if !isdirectory(&backupdir)
     call mkdir(&backupdir, "p")
 endif
 
-set undodir=~/.vim/data/undo
+set undodir=$HOME/.vim/data/undo
 
 if !isdirectory(&undodir)
     call mkdir(&undodir, "p")
 endif
 
-set directory=~/.vim/data/swap
+set directory=$HOME/.vim/data/swap
 
 if !isdirectory(&directory)
     call mkdir(&directory, "p")
@@ -194,16 +194,13 @@ set statusline+=\ bytes:%O "bytes
 
 " set autochdir
 
-set ttimeout
-set ttimeoutlen=100
-
 " autocompletion
 set wildmenu
 set wildmode=list:longest,full
 
 " programming related 
 set tags+=./.tags;/ " which tags files CTRL-] will find 
-set completeopt=longest,menuone " ,preview
+set completeopt=longest,menuone,noselect
 
 set shell=/usr/bin/env\ bash\ --login
 " Redefine the shell redirection operator to receive both the stderr messages

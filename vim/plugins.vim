@@ -2,7 +2,7 @@ if &compatible
     set nocompatible
 endif
 
-let s:plugindir = expand("~/.vim/plugins")
+let s:plugindir = expand("$HOME/.vim/plugins")
 let s:deindir   = s:plugindir . "/repos/github.com/Shougo/dein.vim"
 
 if !isdirectory(s:plugindir)
@@ -13,7 +13,13 @@ if !isdirectory(s:plugindir)
     echo "Done"
 endif
 
-let &runtimepath = s:deindir . "," . &runtimepath
+let s:rtp = s:deindir . ","
+
+if isdirectory(expand("$ZDOTDIR/.zplug/repos/junegunn/fzf"))
+    let s:rtp .= expand("$ZDOTDIR/.zplug/repos/junegunn/fzf,")
+endif
+
+let &runtimepath = s:rtp . &runtimepath
 
 call dein#begin(s:plugindir)
 
@@ -117,37 +123,25 @@ autocmd vimrc FileType java setlocal omnifunc=javacomplete#Complete
 call dein#add("klen/python-mode", { "on_ft": "python" })
     let g:pymode_rope = 0
 
-" php
-call dein#add("arnaud-lb/vim-php-namespace", { "on_ft": "php" })
-
 call dein#add("shawncplus/phpcomplete.vim", { "on_ft": "php" })
     let g:phpcomplete_relax_static_constraint = 1
     let g:phpcomplete_parse_docblock_comments = 1
 
 autocmd vimrc FileType php setlocal omnifunc=phpcomplete#CompletePHP
 
-" <A-k>
+" <s-k>
 call dein#add("alvan/vim-php-manual", { "on_ft": "php" })
-
-call dein#add("dominics/vim-filetype-xdebug")
 
 " css
 call dein#add("gorodinskiy/vim-coloresque", { "on_ft": "css" })
-call dein#add("hail2u/vim-css3-syntax", { "on_ft": "css" })
 
 " html
 call dein#add("mattn/emmet-vim", { "on_ft": "html" })
     let g:user_emmet_expandabbr_key = "<c-e>"
 
-call dein#add("othree/html5.vim", { "on_ft": "html" })
-
 call dein#add("Valloric/MatchTagAlways", { "on_ft": ["html", "xml"] })
 
 " js
-call dein#add("pangloss/vim-javascript", { "on_ft": "javascript" })
-
-call dein#add("othree/javascript-libraries-syntax.vim", { "on_ft": "javascript" })
-
 call dein#add("moll/vim-node", { "on_ft": "javascript" })
 
 " vcs tools
@@ -163,6 +157,9 @@ call dein#add("mhinz/vim-signify")
 " :Gist
 call dein#add("mattn/webapi-vim")
 call dein#add("mattn/gist-vim")
+
+" syntax pack
+call dein#add("sheerun/vim-polyglot")
 
 call dein#end()
 
