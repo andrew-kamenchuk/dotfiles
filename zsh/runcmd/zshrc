@@ -1,13 +1,15 @@
 # zshrc
 export ZSHRC=${${(%):-%x}:A}
 
-ZSRCDIR=${ZSHRC:h} # runcmd
-ZBASEDIR=${ZSRCDIR:h} # zsh
+ZRCDIR=${ZSHRC:h} # runcmd
+
+ZSHDIR=${ZRCDIR:h}
+
 
 fpath=(
     $fpath
-#   $ZBASEDIR/functions
-#   $ZBASEDIR/completions
+#   $ZSHDIR/functions
+#   $ZSHDIR/completions
 )
 
 path=(
@@ -28,7 +30,7 @@ source $ZPLUG_HOME/init.zsh
 zplug "zplug/zplug"
 
 # local
-zplug "$ZSRCDIR/zshrc.d", from:local, use:"*.zsh", nice:19 # after all external plugins
+zplug "${ZSHDIR}/zshrc.d", from:local, use:"*.zsh", nice:19 # after all external plugins
 
 # nvm
 zplug "creationix/nvm", use:"nvm.sh", hook-load:"whence node > /dev/null || nvm install --lts"
