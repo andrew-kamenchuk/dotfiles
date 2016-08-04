@@ -9,7 +9,7 @@ zstyle ':vcs_info:*:*' stagedstr '%F{yellow}*%f'
 zstyle ":vcs_info:*:*" formats $vcs_format # git:(branch)
 zstyle ":vcs_info:*:*" actionformats $vcs_actionformat
 
-setopt local_options prompt_subst
+setopt prompt_subst
 
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd vcs_info

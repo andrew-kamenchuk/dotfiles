@@ -6,8 +6,10 @@ bindkey "^G" send-break
 bindkey "^K" kill-line
 
 # cursor keys
-bindkey "\eOA" up-line-or-history
-bindkey "\eOB" down-line-or-history
+#bindkey "\eOA" up-line-or-history
+#bindkey "\eOB" down-line-or-history
+bindkey "\eOA" history-substring-search-up
+bindkey "\eOB" history-substring-search-down
 bindkey "\eOC" forward-char
 bindkey "\eOD" backward-char
 
