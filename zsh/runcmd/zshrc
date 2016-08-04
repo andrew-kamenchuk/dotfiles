@@ -1,7 +1,14 @@
 # zshrc
 export ZSHRC=${${(%):-%x}:A}
 
-ZSRCDIR=${ZSHRC:h}
+ZSRCDIR=${ZSHRC:h} # runcmd
+ZBASEDIR=${ZSRCDIR:h} # zsh
+
+fpath=(
+    $fpath
+#   $ZBASEDIR/functions
+#   $ZBASEDIR/completions
+)
 
 path=(
     $path

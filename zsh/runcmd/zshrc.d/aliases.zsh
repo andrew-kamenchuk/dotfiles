@@ -7,8 +7,9 @@ alias grep="grep --color=auto --exclude-dir={.git,.svn}"
 alias rgrep="grep -r"
 
 # edit
-alias vimrc="gvim $HOME/.vimrc 2>/dev/null"
-alias zshrc="gvim $ZSHRC 2>/dev/null"
+alias vimrc="gvim --remote-tab $HOME/.vimrc 2>/dev/null"
+alias zshrc="gvim --remote-tab $ZSHRC 2>/dev/null"
+alias tmuxrc="gvim --remote-tan $HOME/.tmux-conf 2>/dev/null"
 
 #
 alias chrome="google-chrome"

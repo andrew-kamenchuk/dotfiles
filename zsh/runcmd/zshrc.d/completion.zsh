@@ -1,10 +1,7 @@
-#
-# Sets completion options.
-#
-# Authors:
-#   Robby Russell <robby@planetargon.com>
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+
+# autoload -Uz compinit && compinit -i -d ${ZDOTDIR:-HOME}/.zcompdump
+
+zmodload -i zsh/complist
 
 setopt complete_in_word    # Complete from both ends of a word.
 setopt always_to_end       # Move cursor to the end of a completed word.
@@ -12,10 +9,12 @@ setopt path_dirs           # Perform path search even on command names with slas
 setopt auto_menu           # Show completion menu on a successive tab press.
 setopt auto_list           # Automatically list choices on ambiguous completion.
 setopt auto_param_slash    # If completed parameter is a directory, add a trailing slash.
+setopt glob_complete       # Do not insert all the words resulting from the glob expansion but generate matches
 unsetopt menu_complete     # Do not autoselect the first completion entry.
 unsetopt flow_control      # Disable start/stop characters in shell editor.
 
-setopt case_glob
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors ''
 
 # Use caching to make completion for commands such as dpkg and apt usable.
 zstyle ':completion::complete:*' use-cache on
@@ -39,9 +38,6 @@ zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
-
-# Increase the number of errors based on the length of the typed word.
-zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
 
 # Don't complete unavailable commands.
 zstyle ':completion:*:functions' ignored-patterns '(_*|pre(cmd|exec))'
