@@ -11,3 +11,18 @@ zz() {
 }
 
 compctl -U -K _z_zsh_tab_completion zz
+
+# rsync ~/Documents/Library to devices
+sync-ebooks() {
+    local devices="/media/$USER/*"
+    for device in $~devices; do
+        if [ ! -d "$device/Library" ]; then
+            echo
+            read -q "REPLY?There is no Library on '${device:t}'. Create? (y/[n]) "
+            echo
+            [[ $REPLY =~ ^[yY]$ ]] || continue
+        fi
+        rsync $* -r --verbose --progress --delete --size-only --protect-args --exclude=.*/ \
+            $HOME/Documents/Library/ $device/Library
+    done
+}
