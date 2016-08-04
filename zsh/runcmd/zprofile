@@ -22,4 +22,4 @@ path=(
 )
 
 # JAVA_HOME latest jdk available
-export JAVA_HOME=`ls -d /usr/lib/jvm/* | grep '/jdk' | sort -r | head -1`
+export JAVA_HOME="$(echo /usr/lib/jvm/jdk*(/Nn[-1]))"
