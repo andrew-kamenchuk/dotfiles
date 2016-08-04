@@ -3,7 +3,8 @@ if [[ ! -d $HOME/.tmux/plugins/tpm ]]; then
 fi
 
 if [ -z $TMUX ]; then
-    tmux attach -t main || tmux new -s main
+#   tmux attach -t main || tmux new -s main
+    tmux new
 fi
 
 if [ -n $TMUX ]; then
