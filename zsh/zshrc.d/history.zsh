@@ -1,5 +1,5 @@
 if [ -z "$HISTFILE" ]; then
-    HISTFILE=${ZDOTDIR:-$HOME}/.zhistory
+    HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"
 fi
 
 HISTSIZE=10000

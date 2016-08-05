@@ -215,3 +215,7 @@ augroup vimrc
     autocmd FileType javascript setlocal makeprg=/usr/bin/env\ node\ %
     autocmd FileType sh setlocal makeprg=/usr/bin/env\ bash\ %
 augroup END
+
+if filereadable(expand("$HOME/.vimrc.local"))
+    source $HOME/.vimrc.local
+endif

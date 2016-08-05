@@ -19,13 +19,13 @@ path=(
 autoload -U colors && colors
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
-ZPLUG_HOME=${ZDOTDIR:-$HOME}/.zplug
+ZPLUG_HOME="${ZDOTDIR:-$HOME}/.zplug"
 
 if [ ! -d $ZPLUG_HOME ]; then
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
-source $ZPLUG_HOME/init.zsh
+source "$ZPLUG_HOME/init.zsh"
 
 zplug "zplug/zplug"
 
@@ -59,3 +59,5 @@ zplug "lukechilds/zsh-better-npm-completion", nice:10
 zplug check || zplug install
 
 zplug load
+
+[ -f "${ZDOTDIR:-$HOME}/.zshrc.local" ] && source "${ZDOTDIR:-$HOME}/.zshrc.local"
