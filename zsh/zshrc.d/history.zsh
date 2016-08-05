@@ -1,4 +1,4 @@
-if [ -z $HISTFILE ]; then
+if [ -z "$HISTFILE" ]; then
     HISTFILE=${ZDOTDIR:-$HOME}/.zhistory
 fi
 
