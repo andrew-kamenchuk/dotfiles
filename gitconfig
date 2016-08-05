@@ -3,16 +3,20 @@
     email = andrew.kamenchuk@gmail.com
 
 [core]
-    excludesfile = ~/.gitignore-global
+    excludesfile = ~/.gitignore
+
+[commit]
+    template = ~/.gitmessage
+
+[diff]
+    tool = gvimdiff
 
 [merge]
+    tool = gvimdiff
     conflictstyle = diff3
 
 [push]
     default = matching
-
-[diff]
-    tool = gvimdiff
 
 [apply]
     whitespace = fix
@@ -22,5 +26,6 @@
 
 [github]
     user = andrew-kamenchuk
+
 [alias]
     lg = !git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit
