@@ -15,22 +15,21 @@ compctl -U -K _z_zsh_tab_completion zz
 # rsync ~/Documents/Library to devices
 sync-ebooks() {
     local device
+    local REPLAY
 
     for device (/media/$USER/*(/N)); do
         if [ ! -d "$device/Library" ]; then
+            read -q "REPLAY?There is no /Library on '${device:t}'. Create? (y/[n]) "
             echo
-            ask "There is no /Library on '${device:t}'. Create?" || continue
+            if [[ $REPLAY =~ ^[^yY]$ ]]; then
+                echo "OK, cancelled"
+                continue
+            fi
         fi
+
         rsync $* -r --verbose --progress --delete --size-only --protect-args --exclude=.*/ \
             "$HOME/Documents/Library/" "$device/Library"
     done
 
     [ -z "$device" ] && echo "Nothing connected!"
-}
-
-ask() {
-    local REPLAY
-    read -q "REPLAY?$1 (y/[n]) "
-    echo
-    [[ $REPLAY =~ ^[yY]$ ]]
 }
