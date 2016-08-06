@@ -1,1 +1,5 @@
 # zlogin
+
+if [[ -t 0 && -z "$TMUX" ]]; then
+    echo "Here be dragons. Turn back now. You have been warned."
+fi
