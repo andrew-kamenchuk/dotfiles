@@ -33,7 +33,9 @@ zplug "zplug/zplug"
 zplug "${ZSHDIR}/zshrc.d", from:local, use:"*.zsh", nice:15
 
 # nvm
-zplug "creationix/nvm", use:"nvm.sh", hook-build:"source nvm.sh && whence node > /dev/null || nvm install --lts"
+zplug "creationix/nvm", \
+    use:"nvm.sh", \
+    hook-build:"source nvm.sh && whence node > /dev/null || nvm install node"
 
 # fzf
 zplug "junegunn/fzf", \
