@@ -33,3 +33,23 @@ sync-ebooks() {
 
     [ -z "$device" ] && echo "Nothing connected!"
 }
+
+# creates mysql user granted to "user_*" databases
+mysql-create-user() {
+    [ $# -eq 0 ] && return 1
+
+    local username
+    local password
+
+    username=$1
+
+    if [ $# -gt 1 ]; then
+        password=$2
+    else
+        password=$username
+    fi
+
+    mysql -uroot -p -e \
+        'CREATE USER "'$username'"@"localhost" IDENTIFIED BY "'$password'"; \
+         GRANT ALL PRIVILEGES ON `'$username'\_%`.* TO "'$username'"@"localhost";'
+}
