@@ -37,6 +37,9 @@ zplug "creationix/nvm", \
     use:"nvm.sh", \
     hook-build:"source nvm.sh && whence node > /dev/null || nvm install node"
 
+# translate-cli
+zplug "soimort/translate-shell", at:"develop"
+
 # fzf
 zplug "junegunn/fzf", \
     hook-build:"./install --no-update-rc --key-bindings --completion", \
