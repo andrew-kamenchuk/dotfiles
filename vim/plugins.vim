@@ -47,7 +47,13 @@ call dein#add("nathanaelkane/vim-indent-guides")
     let g:indent_guides_guide_size  = 2
 
 call dein#add("mhinz/vim-startify")
-    let g:startify_bookmarks = ["~/.vimrc", "~/.vim/plugins.vim", "~/.zsh/.zshrc", "~/Documents/Grive/todo/todo.txt"]
+    let g:startify_bookmarks = [
+        \ "~/.vimrc", 
+        \ "~/.vim/plugins.vim",
+        \ "~/.zsh/.zshrc",
+        \ "~/Documents/Grive/todo/todo.txt",
+        \ "~/Projects",
+        \]
 
 call dein#add("w0ng/vim-hybrid")
 call dein#add("endel/vim-github-colorscheme")
