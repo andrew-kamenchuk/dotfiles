@@ -26,6 +26,9 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
 
+bindkey "^X^U" undo
+bindkey "^Xu" undo
+
 bindkey '^[[Z' reverse-menu-complete                 # [Shift-Tab]
 
 expand-or-complete-with-dots() {
@@ -52,13 +55,18 @@ zstyle ":predict" verbose true
 
 bindkey "^X^A" predict-toggle
 
+abbreviations=(${(f)"$(alias | sed 's/=.*//')"})
+
 # expand alias
 expand-alias() {
-    zle _expand_alias
-    zle expand-word
+    if [[ $LBUFFER =~ '^\s*'${(j:|:)abbreviations}'$' ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+
     zle self-insert
 }
 
 zle -N expand-alias
 
-# bindkey " " expand-alias
+bindkey " " expand-alias
