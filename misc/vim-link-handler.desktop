@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vim Link Handler
+Comment=Handles "vim://file:line" links
+Terminal=false
+Hidden=true
+Exec=.bin/vim-link-handler.zsh %u
+Type=Application
+Categories=
+MimeType=x-scheme-handler/vim;
