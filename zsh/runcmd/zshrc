@@ -5,11 +5,10 @@ ZRCDIR=${ZSHRC:h} # runcmd
 
 ZSHDIR=${ZRCDIR:h}
 
-
 fpath=(
-    $fpath
-#   $ZSHDIR/functions
+    $ZSHDIR/functions
 #   $ZSHDIR/completions
+    $fpath
 )
 
 path=(

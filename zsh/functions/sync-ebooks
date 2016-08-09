@@ -1,0 +1,18 @@
+local device
+local REPLAY
+
+for device (/media/$USER/*(/N)); do
+    if [ ! -d "$device/Library" ]; then
+        read -q "REPLAY?There is no /Library on '${device:t}'. Create? (y/[n]) "
+        echo
+        if [[ $REPLAY =~ ^[^yY]$ ]]; then
+            echo "OK, cancelled"
+            continue
+        fi
+    fi
+
+    rsync $* -r --verbose --progress --delete --size-only --protect-args --exclude=.*/ \
+        "$HOME/Documents/Library/" "$device/Library"
+done
+
+[ -z "$device" ] && echo "Nothing connected!"
