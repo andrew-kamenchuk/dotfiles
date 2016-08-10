@@ -1,5 +1,9 @@
+set nocompatible
+
 set exrc
 set secure
+
+syntax on
 
 augroup vimrc
   autocmd!
@@ -9,7 +13,13 @@ source $HOME/.vim/plugins.vim
 
 filetype plugin indent on
 
-syntax on
+execute "set runtimepath+=" . expand("$HOME/.vim/snippets")
+
+let s:fzfdir = expand("$ZDOTDIR/.zplug/repos/junegunn/fzf")
+
+if isdirectory(s:fzfdir)
+    execute "set runtimepath+=" . s:fzfdir
+endif
 
 set background=dark
 
@@ -25,7 +35,9 @@ endtry
 
 set autoread
 
-" Allow edit buffers to be hidden
+set autowriteall
+
+" allow edited buffers to be hidden
 set hidden
 
 set splitbelow splitright
@@ -107,16 +119,18 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 
-set autoindent
+set cindent
 
-" set paste
-set pastetoggle=
+set paste
+set pastetoggle=<leader>P
 
 set wrap
 set wrapmargin=5
 set linebreak
 set showbreak=\ \ \ \ \ >\
 set textwidth=120
+
+set formatoptions+=j
 
 set modeline
 
@@ -142,7 +156,8 @@ set showfulltag
 set regexpengine=1
 
 " folding
-set foldlevel=1 foldmethod=syntax
+" manual: zf za
+set foldlevel=1 foldmethod=manual
 
 " Try to show at least three lines and two columns of context when
 " scrolling
@@ -171,7 +186,7 @@ autocmd vimrc InsertLeave * hi Statusline ctermbg=46 ctermfg=0 guibg=Black guifg
 set laststatus=2
 
 set statusline=%{$USER}
-set statusline+=\ %n "buffer number
+set statusline+=\ buffer:%n "buffer number
 set statusline+=\ [ "start group
 set statusline+=%{&fenc==\"\"?&enc:&fenc} " encoding
 set statusline+=%{(exists(\"+bomb\")\ &&\ &bomb)?\"+B\":\"\"} "BOM
@@ -180,7 +195,7 @@ set statusline+=] "end group
 set statusline+=\ %m "modifier flag
 set statusline+=\ %r "readonly?
 set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
-set statusline+=\ [%f] "full filepath
+set statusline+=\ [%t] "tail
 set statusline+=\ %{exists('g:loaded_tagbar')?tagbar#currenttag('[TAG:\ %s]\ ','','f'):''}
 set statusline+=\ %#error#
 set statusline+=%{exists('g:loaded_syntastic_cheker')?SyntasticStatuslineFlag():''}
@@ -202,12 +217,10 @@ set wildmode=list:longest,full
 set tags+=./.tags;/ " which tags files CTRL-] will find 
 set completeopt=longest,menuone,noselect
 
-set shell=/usr/bin/env\ bash\ --login
+set shell=/usr/bin/env\ bash " --login
 " Redefine the shell redirection operator to receive both the stderr messages
 " and stdout messages
 set shellredir=>%s\ 2>&1
-
-set autowrite " autosave before make
 
 augroup vimrc
     autocmd FileType php setlocal makeprg=/usr/bin/env\ php\ %

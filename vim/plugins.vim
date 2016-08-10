@@ -1,25 +1,14 @@
-if &compatible
-    set nocompatible
-endif
+set nocompatible
 
 let s:plugindir = expand("$HOME/.vim/plugins")
+
 let s:deindir   = s:plugindir . "/repos/github.com/Shougo/dein.vim"
 
 if !isdirectory(s:plugindir)
-    call mkdir(s:plugindir)
-    echo "Installing plugin manager"
     execute "!git clone https://github.com/Shougo/dein.vim " . s:deindir
-    silent !clear
-    echo "Done"
 endif
 
-let s:rtp = s:deindir . ","
-
-if isdirectory(expand("$ZDOTDIR/.zplug/repos/junegunn/fzf"))
-    let s:rtp .= expand("$ZDOTDIR/.zplug/repos/junegunn/fzf,")
-endif
-
-let &runtimepath = s:rtp . &runtimepath
+execute "set runtimepath+=" . s:deindir
 
 call dein#begin(s:plugindir)
 
@@ -84,10 +73,12 @@ call dein#add("jiangmiao/auto-pairs.git")
 call dein#add("james9909/stackanswers.vim")
 
 call dein#add("scrooloose/syntastic")
-    let g:syntastic_enable_signs   = 1
-    let g:syntastic_php_checkers   = ["php", "phpcs"]
-    let g:syntastic_php_phpcs_args = ["--standard=PSR2"]
-    let g:syntastic_js_checkers    = ["jshint"]
+    let g:syntastic_enable_signs     = 1
+    let g:syntastic_check_on_open    = 1
+    let g:syntastic_aggregate_errors = 1
+    let g:syntastic_php_checkers     = ["php", "phpcs"]
+    let g:syntastic_php_phpcs_args   = ["--standard=PSR2"]
+    let g:syntastic_js_checkers      = ["jshint"]
 
 call dein#add("joonty/vdebug", { "on_ft": "php" })
     let g:vdebug_options = {
@@ -106,13 +97,16 @@ call dein#add("SirVer/ultisnips")
     let g:UltiSnipsListSnippets="<c-l>"
     let g:UltiSnipsJumpForwardTrigger="<c-b>"
     let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-    let g:UltiSnipsEditSplit="vertical"
+    let g:UltiSnipsEditSplit="horizontal"
+    let g:UltiSnipsSnippetsDir="~/.vim/snippets/UltiSnips"
 
 call dein#add("honza/vim-snippets")
 
 " projects
 call dein#add("airblade/vim-rooter")
     let g:rooter_change_directory_for_non_project_files = 'current'
+    let g:rooter_silent_chdir = 1
+    let g:rooter_resolve_links = 1
 
 " completion
 call dein#add("Valloric/YouCompleteMe", { "build": "./install.py --clang-completer" })

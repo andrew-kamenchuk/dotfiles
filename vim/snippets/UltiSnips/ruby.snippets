@@ -1,0 +1,22 @@
+snippet Vagrant "Vagrant File" b
+VAGRANTFILE_API_VERSION="${1:2}"
+
+app_name = "${2:`!v expand('%:p:h:t')`}"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+	config.vm.box = "ubuntu/xenial64"
+
+	config.vm.synced_folder "./", "${3:/srv/#\{app_name\}}", create: true
+
+	config.vm.network :forwarded_port, guest: ${4:8080}, host: $4
+
+	config.vm.provision :shell, path: "${5:bootstrap.sh}"
+
+	config.vm.provider :virtualbox do |vb|
+		vb.name = "${6:ubuntu-xenial64-#\{app_name\}}"
+		vb.cpus = 2
+		vb.memory = ${7:1024}
+	end
+
+end
+endsnippet

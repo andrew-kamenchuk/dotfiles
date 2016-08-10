@@ -1,0 +1,19 @@
+## raw PHP ##
+
+snippet pdoConnection "PDO Connection function" b
+/**
+ * @return \PDO
+ */
+function getConnection()
+{
+	static $db;
+
+	if (!isset($db)) {
+		$db = new \PDO("mysql:host=${4:localhost};port=${5:3306};dbname=${1};charset=utf-8", "${2:root}", "${3}", [
+			\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+		]);
+	}
+
+	return $db;
+}
+endsnippet
