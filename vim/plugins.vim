@@ -26,8 +26,10 @@ call dein#add("tsukkee/unite-tag")
 
 call dein#add("freitass/todo.txt-vim", { "on_ft": "todo" })
 
-" <leader>c<space>, <leader>cm, <leader>cs, <leader>cA, <leader>cu
+" <leader>c<space>, <leader>cs, <leader>cm, <leader>cs, <leader>cA, <leader>cu
 call dein#add("scrooloose/nerdcommenter")
+    let g:NERDSpaceDelims = 1
+    let g:NERDTrimTrailingWhitespace = 1
 
 call dein#add("editorconfig/editorconfig-vim")
 

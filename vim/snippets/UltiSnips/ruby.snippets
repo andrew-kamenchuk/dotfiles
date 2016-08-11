@@ -1,4 +1,4 @@
-snippet Vagrant "Vagrant File" b
+snippet Vagrantfile "Vagrant File" b
 VAGRANTFILE_API_VERSION="${1:2}"
 
 app_name = "${2:`!v expand('%:p:h:t')`}"
@@ -18,5 +18,39 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		vb.memory = ${7:1024}
 	end
 
+end
+endsnippet
+
+snippet VagrantSyncedRsync "config.vm.synced_folder type: rsync" b
+config.vm.synced_folder "./", "${1:/srv/#\{app_name\}}", type: "rsync",
+	rsync__exclude: [".git/", ".vagrant/"${2}],
+	rsync__args: ["--archive", "--delete", "--compress"${3}]
+	${4}
+endsnippet
+
+snippet VagrantMulti "Vagrantfile multimachines section" b
+config.vm.define "${1:${VISUAL:env}}", primary: true do |$1|
+	${2}
+end
+endsnippet
+
+snippet VagrantPushFtp "Vagrantfile push ftp strategy section" b
+config.push.define "${1:${VISUAL:default}}", strategy: "ftp" do |push|
+	push.host = ${2}
+	push.username = ${3}
+	push.password = ${4}
+	push.secure = ${5:true}
+	push.exclude = ".git/"
+	push.exclude = ".vagrant/"
+	push.exclude = "Vagrantfile"
+	${14}
+end
+endsnippet
+
+snippet VagrantPushExec "Vagrantfile push local-exec strategy section" b
+config.push.define "${1:${VISUAL:default}}", strategy: "local-exec" do |push|
+	push.inline = <<-SCRIPT
+		${2}
+	SCRIPT
 end
 endsnippet

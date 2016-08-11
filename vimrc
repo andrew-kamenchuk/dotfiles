@@ -119,10 +119,10 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 
 set expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 
-set cindent
+set autoindent
 
 set paste
-set pastetoggle=<leader>P
+set pastetoggle=
 
 set wrap
 set wrapmargin=5
@@ -157,7 +157,7 @@ set regexpengine=1
 
 " folding
 " manual: zf za
-set foldlevel=1 foldmethod=manual
+set foldmethod=manual
 
 " Try to show at least three lines and two columns of context when
 " scrolling

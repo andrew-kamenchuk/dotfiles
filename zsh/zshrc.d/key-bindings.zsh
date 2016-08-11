@@ -4,6 +4,7 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^G" send-break
 bindkey "^K" kill-line
+bindkey "^?" backward-delete-char
 
 # cursor keys
 #bindkey "\eOA" up-line-or-history
@@ -70,3 +71,4 @@ expand-alias() {
 zle -N expand-alias
 
 bindkey " " expand-alias
+bindkey "^ " magic-space

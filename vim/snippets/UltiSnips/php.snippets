@@ -1,5 +1,29 @@
 ## raw PHP ##
+global !p
+import vim
 
+endglobal
+
+# Interface declaration
+snippet interface "Interface declaration" b
+interface ${1:`!v expand("%:r:t")`}
+{
+	public function ${2}();
+}
+endsnippet
+
+# Class declaration
+snippet class "Class declaration" b
+class ${1:`!v expand("%:r:t")`} ${3:extends ${2:A}} ${5:implements ${4:B}}
+{
+	public function __construct(${6})
+	{
+		${7}
+	}
+}
+endsnippet
+
+# helper function quick db connect
 snippet pdoConnection "PDO Connection function" b
 /**
  * @return \PDO
