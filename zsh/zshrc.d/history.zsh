@@ -14,5 +14,5 @@ setopt share_history
 
 # do not save typos in the history
 zshaddhistory() {
-    whence ${${(z)1}[1]} > /dev/null || return 1
+    whence ${${(z)1}[1]} > /dev/null || return 2
 }

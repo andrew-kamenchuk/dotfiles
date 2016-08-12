@@ -14,8 +14,26 @@ bindkey "\eOB" history-substring-search-down
 bindkey "\eOC" forward-char
 bindkey "\eOD" backward-char
 
-bindkey "^[[1;3C" insert-cycledright
-bindkey "^[[1;3D" insert-cycledleft
+insert-cycledleft () {
+    setopt nopushdminus pushd_silent
+    builtin pushd +1 &>/dev/null || true
+
+    zle reset-prompt
+}
+
+zle -N insert-cycledleft
+
+insert-cycledright () {
+    setopt nopushdminus pushd_silent
+    builtin pushd -0 &>/dev/null || true
+
+    zle reset-prompt
+}
+
+zle -N insert-cycledright
+
+bindkey "^[[1;3C" insert-cycledleft
+bindkey "^[[1;3D" insert-cycledright
 
 bindkey '^R' history-incremental-search-backward      # [Ctrl-r] - Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
 

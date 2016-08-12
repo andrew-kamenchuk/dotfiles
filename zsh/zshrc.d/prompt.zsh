@@ -12,7 +12,8 @@ zstyle ":vcs_info:*:*" actionformats $vcs_actionformat
 setopt prompt_subst
 
 autoload -Uz add-zsh-hook
+add-zsh-hook chpwd vcs_info
 add-zsh-hook precmd vcs_info
 
-PROMPT="%(?:%F{green}:%F{red})➜ %f "'${vcs_info_msg_0_}'" %B%F{cyan}%1~%f%b %% "
-RPROMPT="[%3d] ~ [%T] [%n]"
+PROMPT="%(?:%F{green}:%F{red}) ➜ %f "'${vcs_info_msg_0_}'"%B%F{cyan}%1~%f%b %% "
+RPROMPT="[%(4/:.../:)%3d] ~ [%T] [%n]"

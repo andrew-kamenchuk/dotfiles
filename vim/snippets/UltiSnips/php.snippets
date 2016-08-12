@@ -6,7 +6,7 @@ endglobal
 
 # Interface declaration
 snippet interface "Interface declaration" b
-interface ${1:`!v expand("%:r:t")`}
+interface ${1:`!v expand("%:t:r")`}
 {
 	public function ${2}();
 }
@@ -14,7 +14,7 @@ endsnippet
 
 # Class declaration
 snippet class "Class declaration" b
-class ${1:`!v expand("%:r:t")`} ${3:extends ${2:A}} ${5:implements ${4:B}}
+class ${1:`!v expand("%:t:r")`} ${3:extends ${2:A}} ${5:implements ${4:B}}
 {
 	public function __construct(${6})
 	{
