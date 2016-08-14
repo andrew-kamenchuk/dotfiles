@@ -1,29 +1,176 @@
-## raw PHP ##
+
 global !p
 import vim
 
 endglobal
 
-# Interface declaration
-snippet interface "Interface declaration" b
-interface ${1:`!v expand("%:t:r")`}
-{
-	public function ${2}();
+snippet /* "doc comments" b
+/**
+ * ${1}
+ */
+$0
+endsnippet
+
+snippet if "if" b
+if (${1}) {
+	$0
 }
 endsnippet
 
-# Class declaration
+snippet ifnot "if !" b
+if (!${1}) {
+	$0
+}
+endsnippet
+
+snippet ife "if else" b
+if (${1}) {
+	${2}
+} else {
+	$0
+}
+endsnippet
+
+snippet elif "elseif"
+elseif (${1}) {
+	$0
+}
+endsnippet
+
+snippet else "else"
+else (${1}) {
+	$0
+}
+endsnippet
+
+snippet ifi "if (isset())" b
+if (isset(${1})) {
+	$0
+}
+endsnippet
+
+snippet switch "switch" b
+switch (${1}) {
+	case ${2}:
+		${3}
+		break;
+	$0
+	default:
+		${4}
+}
+endsnippet
+
+snippet case "case" b
+case ${1}:
+	${2}
+	break;
+$0
+endsnippet
+
+snippet while "while" b
+while (${1}) {
+	$0
+}
+endsnippet
+
+snippet do "do while" b
+do {
+	$0
+} while (${3});
+endsnippet
+
+snippet for "for" b
+for ($${2:i} = 0; $$2 < ${1:$count} ; $$2++) {
+	$0
+}
+endsnippet
+
+snippet foreach "foreach as" b
+foreach ($${1} as $${2}) {
+	$0
+}
+endsnippet
+
+snippet foreachkey "foreach as" b
+foreach ($${1} as $${2} => $${3}) {
+	$0
+}
+endsnippet
+
+snippet try "try catch" b
+try {
+	${2}
+} catch (${1:\Exception} $e) {
+	$0
+}
+endsnippet
+
+snippet rett "return true;" b
+return true;
+endsnippet
+
+snippet retf "return false" b
+return false;
+endsnippet
+
+snippet isa "instanceof"
+instanceof $0
+endsnippet
+
+## VAR_DUMP
+snippet vd "dump" b
+var_dump(${1:${VISUAL}});
+endsnippet
+
+snippet dd "dump & die" b
+var_dump(${1:${VISUAL}});
+exit;
+endsnippet
+
+snippet interface "Interface declaration" b
+interface ${1:`!v expand("%:t:r")`}
+{
+	public function $0();
+}
+endsnippet
+
 snippet class "Class declaration" b
 class ${1:`!v expand("%:t:r")`} ${3:extends ${2:A}} ${5:implements ${4:B}}
 {
-	public function __construct(${6})
+	public function ${6:__construct}(${7})
 	{
-		${7}
+		$0
 	}
 }
 endsnippet
 
+snippet pub "Public method" b
+public function ${1:func}(${2:\$params})
+{
+	$0
+}
+endsnippet
+
+snippet pubs "Public static method" b
+public static function ${1:func}(${2:\$params})
+{
+	$0
+}
+endsnippet
+
+snippet pubc "Public __construct" b
+public function __construct(${1:\$params})
+{
+	$0
+}
+endsnippet
+
+snippet new "new instance" b
+$${2:${1/\w+/\l$0/}} = new ${1:${VISUAL}}($3);
+endsnippet
+
 # helper function quick db connect
+
 snippet pdoConnection "PDO Connection function" b
 /**
  * @return \PDO
@@ -33,7 +180,7 @@ function getConnection()
 	static $db;
 
 	if (!isset($db)) {
-		$db = new \PDO("mysql:host=${4:localhost};port=${5:3306};dbname=${1};charset=utf-8", "${2:root}", "${3}", [
+		$db = new \PDO("mysql:host=${4:localhost};port=${5:3306};dbname=${1};charset=utf8", "${2:root}", "${3}", [
 			\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
 		]);
 	}

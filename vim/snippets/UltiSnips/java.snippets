@@ -1,0 +1,21 @@
+snippet main "main()" b
+public static void main(String args[]) {
+	$0
+}
+endsnippet
+
+snippet new "new instance" b
+${1:Object} ${2:${1/\w+/\l$0/}} = new $1(${3});
+endsnippet
+
+snippet list "Collections List" b
+List<${1:String}> ${3:list} = new ${2:Array}List<$1>();
+endsnippet
+
+snippet map "Collections Map" b
+Map<${1:String}, ${2:String}> ${4:map} = new ${3:Hash}Map<$1, $2>();
+endsnippet
+
+snippet set "Collections Set" b
+Set<${1:String}> ${4:set} = new ${3:Hash}Set<$1>();
+endsnippet

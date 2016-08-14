@@ -11,8 +11,6 @@ augroup END
 
 source $HOME/.vim/plugins.vim
 
-filetype plugin indent on
-
 execute "set runtimepath+=" . expand("$HOME/.vim/snippets")
 
 let s:fzfdir = expand("$ZDOTDIR/.zplug/repos/junegunn/fzf")

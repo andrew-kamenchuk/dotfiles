@@ -102,8 +102,6 @@ call dein#add("SirVer/ultisnips")
     let g:UltiSnipsEditSplit="horizontal"
     let g:UltiSnipsSnippetsDir="~/.vim/snippets/UltiSnips"
 
-call dein#add("honza/vim-snippets")
-
 " projects
 call dein#add("airblade/vim-rooter")
     let g:rooter_change_directory_for_non_project_files = 'current'
@@ -164,6 +162,8 @@ call dein#add("mattn/gist-vim")
 call dein#add("sheerun/vim-polyglot")
 
 call dein#end()
+
+filetype plugin indent on
 
 if dein#check_install()
     call dein#install()
