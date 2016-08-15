@@ -100,13 +100,13 @@ if !isdirectory(&backupdir)
     call mkdir(&backupdir, "p")
 endif
 
-set undodir=$HOME/.vim/data/undo
+set undodir=$HOME/.vim/data/undo//
 
 if !isdirectory(&undodir)
     call mkdir(&undodir, "p")
 endif
 
-set directory=$HOME/.vim/data/swap
+set directory=$HOME/.vim/data/swap//
 
 if !isdirectory(&directory)
     call mkdir(&directory, "p")

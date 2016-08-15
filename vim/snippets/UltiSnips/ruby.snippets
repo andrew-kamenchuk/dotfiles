@@ -21,16 +21,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 endsnippet
 
+snippet VagrantNetworkPrivate "config.vm.network private" b
+config.vm.network :private_network, ip: "192.168.${1:33.10}"
+endsnippet
+
+snippet VagrantProvisionInline "provision :shell, inline: " b
+config.vm.provision :shell, inline: <<-SHELL
+	$0
+SHELL
+endsnippet
+
 snippet VagrantSyncedRsync "config.vm.synced_folder type: rsync" b
 config.vm.synced_folder "./", "${1:/srv/#\{app_name\}}", type: "rsync",
 	rsync__exclude: [".git/", ".vagrant/"${2}],
 	rsync__args: ["--archive", "--delete", "--compress"${3}]
-	${4}
+	$0
 endsnippet
 
 snippet VagrantMachine "Vagrantfile multimachines section" b
 config.vm.define "${1:${VISUAL:env}}", primary: true do |$1|
-	${2}
+	$0
 end
 endsnippet
 
@@ -43,7 +53,7 @@ config.push.define "ftp" do |push|
 	push.exclude = ".git/"
 	push.exclude = ".vagrant/"
 	push.exclude = "Vagrantfile"
-	${5}
+	$0
 end
 endsnippet
 
@@ -56,7 +66,7 @@ config.push.define "${1:${VISUAL:default}}", strategy: "ftp" do |push|
 	push.exclude = ".git/"
 	push.exclude = ".vagrant/"
 	push.exclude = "Vagrantfile"
-	${6}
+	$0
 end
 endsnippet
 

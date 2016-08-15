@@ -19,7 +19,7 @@ call dein#add("Shougo/vimproc.vim", { "build": "make" })
 call dein#add("Shougo/unite.vim")
     let g:unite_enable_start_insert = 1
     let g:unite_split_rule = "botright"
-    let g:unite_winheight = 10
+    let g:unite_winheight = 20
     let g:unite_candidate_icon="▷"
 
 call dein#add("tsukkee/unite-tag")
@@ -33,18 +33,22 @@ call dein#add("scrooloose/nerdcommenter")
 
 call dein#add("editorconfig/editorconfig-vim")
 
-call dein#add("nathanaelkane/vim-indent-guides")
-    let g:indent_guides_start_label = 2
-    let g:indent_guides_guide_size  = 2
-
 call dein#add("mhinz/vim-startify")
+    let g:startify_session_dir = expand("$HOME/.vim/sessions")
+    let g:startify_list_order = [
+        \ [' Sessions: '], 'sessions',
+        \ [' Bookmarks: '], 'bookmarks', 
+        \ [' Commands: '], 'commands', 
+        \ [' MRU: '], 'files',
+        \ [' MRU Current directory: '], 'dir'
+    \]
     let g:startify_bookmarks = [
         \ "~/.vimrc", 
         \ "~/.vim/plugins.vim",
         \ "~/.zsh/.zshrc",
         \ "~/Documents/Grive/todo/todo.txt",
         \ "~/Projects",
-        \]
+    \]
 
 call dein#add("w0ng/vim-hybrid")
 call dein#add("endel/vim-github-colorscheme")
@@ -101,12 +105,6 @@ call dein#add("SirVer/ultisnips")
     let g:UltiSnipsJumpBackwardTrigger="<c-z>"
     let g:UltiSnipsEditSplit="horizontal"
     let g:UltiSnipsSnippetsDir="~/.vim/snippets/UltiSnips"
-
-" projects
-call dein#add("airblade/vim-rooter")
-    let g:rooter_change_directory_for_non_project_files = 'current'
-    let g:rooter_silent_chdir = 1
-    let g:rooter_resolve_links = 1
 
 " completion
 call dein#add("Valloric/YouCompleteMe", { "build": "./install.py --clang-completer" })

@@ -15,3 +15,5 @@ set listchars=tab:>-,trail:-,nbsp:%,extends:>,precedes:<
 set nohlsearch "no highlight search
 set incsearch  " but hi as typing
 set ignorecase smartcase
+
+set scrolloff=3 sidescrolloff=2
