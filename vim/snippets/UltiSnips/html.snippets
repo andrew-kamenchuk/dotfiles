@@ -1,0 +1,51 @@
+snippet link "link" b
+<link rel="${1}" href="${2}" title="${3}" type="${4}" />
+endsnippet
+
+snippet link:atom "link atom" b
+<link rel="alternate" href="${1:atom.xml}" title="Atom" type="application/atom+xml" />
+endsnippet
+
+snippet link:s "stylesheet minimal" b
+<link rel="stylesheet" href="${1:style.css}" />
+endsnippet
+
+snippet link:css "stylesheet" b
+<link rel="stylesheet" href="${1:style.css}" type="text/css" media="${2:all}" />
+endsnippet
+
+snippet link:favicon "favicon" b
+<link rel="shortcut icon" href="${1:favicon.ico}" type="image/x-icon" />
+endsnippet
+
+snippet link:rss "atom+xml" b
+<link rel="alternate" href="${1:rss.xml}" title="RSS" type="application/atom+xml" />
+endsnippet
+
+snippet link:touch "aple-touch-icon" b
+<link rel="apple-touch-icon" href="${1:favicon.png}" />
+endsnippet
+
+snippet script "script js" b
+<script type="text/javascript" charset="utf-8">
+	$0
+</script>
+endsnippet
+
+snippet script:src "script src js" b
+<script src="${1}.js" type="text/javascript" charset="utf-8"></script>
+endsnippet
+
+snippet html "html 5" b
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>${2:`!v expand('%:t:r')`}</title>
+	</head>
+	<body>
+		$0
+	</body>
+</html>
+endsnippet
