@@ -35,6 +35,8 @@ set autoread
 
 set autowriteall
 
+set autochdir
+
 " allow edited buffers to be hidden
 set hidden
 
@@ -76,7 +78,7 @@ set number relativenumber
 
 " set nrformats-=octal
 
-set showtabline=2
+set showtabline=1
 
 " allow bs all
 set backspace=indent,eol,start
@@ -89,6 +91,10 @@ set encoding=utf-8 nobomb
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+" programming related 
+set tags+=./.tags;/ " which tags files CTRL-] will find 
+
+set completeopt=longest,menuone,noselect
 
 " backup
 set backup
@@ -170,20 +176,32 @@ set ruler
 " vertical rulers:
 set colorcolumn=+1
 
-hi ColorColumn ctermbg=0  guibg=Black
+highlight ColorColumn ctermbg=Black
 
 " completion popup color
-hi PmenuSel ctermbg=46 ctermfg=0 guibg=Black guifg=Green
-hi Pmenu    ctermbg=255 ctermfg=0 guibg=White guifg=Black
-" statusline
-hi Statusline ctermbg=46 ctermfg=0 guibg=Black guifg=Green
+highlight Pmenu    cterm=NONE ctermbg=White ctermfg=Black
+highlight PmenuSel cterm=NONE ctermbg=Black ctermfg=White
 
-autocmd vimrc InsertEnter * hi Statusline ctermbg=255 ctermfg=0 guibg=White guifg=Black
-autocmd vimrc InsertLeave * hi Statusline ctermbg=46 ctermfg=0 guibg=Black guifg=Green
+highlight Visual cterm=bold ctermfg=bg ctermbg=fg
+
+highlight StatusLine cterm=NONE ctermfg=White
+
+function! HiStatusLine(mode)
+    if a:mode == 'v' || a:mode == 'V' || a:mode == ''
+        highlight StatusLine ctermbg=Blue
+    elseif a:mode == 'i' || a:mode == 'R'
+        highlight StatusLine ctermbg=DarkCyan
+    else
+        highlight StatusLine ctermbg=DarkBlue
+    endif
+
+    return ""
+endfunction
 
 set laststatus=2
 
 set statusline=%{$USER}
+set statusline+=\ %{mode()}
 set statusline+=\ buffer:%n "buffer number
 set statusline+=\ [ "start group
 set statusline+=%{&fenc==\"\"?&enc:&fenc} " encoding
@@ -204,18 +222,14 @@ set statusline+=\ L:%l/%L(%p) "lines nu, percentage, total
 set statusline+=\ col:%c "column nu
 set statusline+=\ ch:0x%04B "char under cursor (hex)
 set statusline+=\ bytes:%O "bytes
+set statusline+=%{HiStatusLine(mode())}
 
-" set autochdir
-
-" autocompletion
+" command line completion
 set wildmenu
-set wildmode=list:longest,full
-
-" programming related 
-set tags+=./.tags;/ " which tags files CTRL-] will find 
-set completeopt=longest,menuone,noselect
+set wildmode=full
 
 set shell=/usr/bin/env\ bash " --login
+
 " Redefine the shell redirection operator to receive both the stderr messages
 " and stdout messages
 set shellredir=>%s\ 2>&1
@@ -226,6 +240,7 @@ augroup vimrc
     autocmd FileType javascript setlocal makeprg=/usr/bin/env\ node\ %
     autocmd FileType sh setlocal makeprg=/usr/bin/env\ bash\ %
 augroup END
+
 
 if filereadable(expand("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
