@@ -70,6 +70,7 @@ call dein#add("Lokaltog/vim-easymotion")
 call dein#add("matze/vim-move")
 
 call dein#add("majutsushi/tagbar")
+    let g:tagbar_width = 30
 
 call dein#add("mbbill/undotree")
 

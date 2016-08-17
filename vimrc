@@ -33,6 +33,8 @@ endtry
 
 colorscheme default
 
+set viminfo='50,/50,:50,<10,n~/.vim/viminfo
+
 set autoread
 
 set autowriteall
@@ -64,7 +66,7 @@ set undolevels=200
 set t_Co=256
 
 set noerrorbells visualbell t_vb=
-autocmd vimrc GUIEnter * set visualbell t_vb=
+" autocmd vimrc GUIEnter * set visualbell t_vb=
 
 set confirm
 
@@ -91,8 +93,7 @@ set encoding=utf-8 nobomb
 set fileencoding=utf-8
 set fileencodings=utf-8
 
-" programming related 
-set tags+=./.tags;/ " which tags files CTRL-] will find 
+set tags+=./.tags;/
 
 set completeopt=longest,menuone,noselect
 
@@ -215,6 +216,8 @@ augroup vimrc
     autocmd FileType javascript setlocal makeprg=/usr/bin/env\ node\ %
     autocmd FileType sh setlocal makeprg=/usr/bin/env\ bash\ %
 augroup END
+
+autocmd vimrc FileType vim setlocal keywordprg=:help
 
 iabbrev @@ andrew.kamenchuk@gmail.com
 
