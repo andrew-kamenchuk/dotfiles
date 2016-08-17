@@ -43,10 +43,10 @@ call dein#add("mhinz/vim-startify")
         \ [' MRU Current directory: '], 'dir'
     \]
     let g:startify_bookmarks = [
-        \ "~/.vimrc", 
-        \ "~/.vim/plugins.vim",
-        \ "~/.zsh/.zshrc",
-        \ "~/Documents/Grive/todo/todo.txt",
+        \ { "v": "~/.vimrc", },
+        \ { "p": "~/.vim/plugins.vim", },
+        \ { "z": "~/.zsh/.zshrc",},
+        \ { "t": "~/Documents/Grive/todo/todo.txt", },
         \ "~/Projects",
     \]
 

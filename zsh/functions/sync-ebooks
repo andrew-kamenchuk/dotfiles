@@ -11,8 +11,10 @@ for device (/media/$USER/*(/N)); do
         fi
     fi
 
-    rsync $* -r --verbose --progress --delete --size-only --protect-args --exclude=.*/ \
+    rsync $* -r --progress --delete --size-only --protect-args --exclude=.*/ \
         "$HOME/Documents/Library/" "$device/Library"
 done
 
 [ -z "$device" ] && echo "Nothing connected!"
+
+# vim: syntax=zsh

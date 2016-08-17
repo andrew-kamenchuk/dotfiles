@@ -3,6 +3,8 @@ set nocompatible
 set exrc
 set secure
 
+set modeline
+
 syntax on
 
 augroup vimrc
@@ -26,10 +28,10 @@ try
 catch
     if has("gui_running")
         colorscheme desert
-    else
-        colorscheme default
     endif
 endtry
+
+colorscheme default
 
 set autoread
 
@@ -52,8 +54,8 @@ set cmdheight=1
 
 set sessionoptions-=options
 
-autocmd vimrc BufWinLeave * silent! mkview
-autocmd vimrc BufWinEnter * silent! loadview
+" autocmd vimrc BufWinLeave * silent! mkview
+" autocmd vimrc BufWinEnter * silent! loadview
 
 set title
 
@@ -75,8 +77,6 @@ set mouse=a
 set mousemodel=popup_setpos
 
 set number relativenumber
-
-" set nrformats-=octal
 
 set showtabline=1
 
@@ -136,8 +136,6 @@ set textwidth=120
 
 set formatoptions+=j
 
-set modeline
-
 set fileformat=unix
 set fileformats=unix,dos,mac
 
@@ -176,33 +174,13 @@ set ruler
 " vertical rulers:
 set colorcolumn=+1
 
-highlight ColorColumn ctermbg=Black
-
-" completion popup color
-highlight Pmenu    cterm=NONE ctermbg=White ctermfg=Black
-highlight PmenuSel cterm=NONE ctermbg=Black ctermfg=White
-
-highlight Visual cterm=bold ctermfg=bg ctermbg=fg
-
-highlight StatusLine cterm=NONE ctermfg=White
-
-function! HiStatusLine(mode)
-    if a:mode == 'v' || a:mode == 'V' || a:mode == ''
-        highlight StatusLine ctermbg=Blue
-    elseif a:mode == 'i' || a:mode == 'R'
-        highlight StatusLine ctermbg=DarkCyan
-    else
-        highlight StatusLine ctermbg=DarkBlue
-    endif
-
-    return ""
-endfunction
-
 set laststatus=2
 
-set statusline=%{$USER}
-set statusline+=\ %{mode()}
-set statusline+=\ buffer:%n "buffer number
+set statusline=%{HiStatusLine(mode())} " empty str, triggers highlighting
+set statusline+=\%#error#%{exists('*SyntasticStatuslineFlag')?SyntasticStatuslineFlag():''}%*
+set statusline+=\ (%{mode()})
+set statusline+=\ [%{$USER}]
+set statusline+=\ b:%n "buffer number
 set statusline+=\ [ "start group
 set statusline+=%{&fenc==\"\"?&enc:&fenc} " encoding
 set statusline+=%{(exists(\"+bomb\")\ &&\ &bomb)?\"+B\":\"\"} "BOM
@@ -210,19 +188,16 @@ set statusline+=/%{&ff}/%y "fileformat/filetype
 set statusline+=] "end group
 set statusline+=\ %m "modifier flag
 set statusline+=\ %r "readonly?
-set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#statusline():''}
-set statusline+=\ [%t] "tail
-set statusline+=\ %{exists('g:loaded_tagbar')?tagbar#currenttag('[TAG:\ %s]\ ','','f'):''}
-set statusline+=\ %#error#
-set statusline+=%{exists('g:loaded_syntastic_cheker')?SyntasticStatuslineFlag():''}
-set statusline+=%*
-set statusline+=\ %{strftime('%e\ %b\ %a\ %H:%M')}
+set statusline+=\ %{exists('*fugitive#statusline')?fugitive#statusline():''}
+" set statusline+=\ [%t] "tail
+set statusline+=\ %{exists('*tagbar#currenttag')?tagbar#currenttag('[tag:%s]',''):''}
 set statusline+=%= " right align reminder
 set statusline+=\ L:%l/%L(%p) "lines nu, percentage, total
 set statusline+=\ col:%c "column nu
 set statusline+=\ ch:0x%04B "char under cursor (hex)
 set statusline+=\ bytes:%O "bytes
-set statusline+=%{HiStatusLine(mode())}
+set statusline+=\ [%{strftime('%H:%M\ %a\ %d\ %b')}]
+set statusline+=%<
 
 " command line completion
 set wildmenu
@@ -241,6 +216,7 @@ augroup vimrc
     autocmd FileType sh setlocal makeprg=/usr/bin/env\ bash\ %
 augroup END
 
+iabbrev @@ andrew.kamenchuk@gmail.com
 
 if filereadable(expand("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local

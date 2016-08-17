@@ -14,3 +14,5 @@ fi
 mysql -uroot -p -e \
     'CREATE USER "'$username'"@"localhost" IDENTIFIED BY "'$password'"; \
      GRANT ALL PRIVILEGES ON `'$username'\_%`.* TO "'$username'"@"localhost";'
+
+# vim: syntax=zsh
