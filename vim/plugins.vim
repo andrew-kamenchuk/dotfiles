@@ -4,7 +4,7 @@ let s:plugindir = expand("$HOME/.vim/plugins")
 
 let s:deindir   = s:plugindir . "/repos/github.com/Shougo/dein.vim"
 
-if !isdirectory(s:plugindir)
+if !isdirectory(s:deindir)
     execute "!git clone https://github.com/Shougo/dein.vim " . s:deindir
 endif
 
@@ -20,9 +20,32 @@ call dein#add("Shougo/unite.vim")
     let g:unite_enable_start_insert = 1
     let g:unite_split_rule = "botright"
     let g:unite_winheight = 20
-    let g:unite_candidate_icon="▷"
+    let g:unite_candidate_icon="▷ "
+
+    let g:unite_source_menu_menus = {}
+
+    let g:unite_source_menu_menus.git = {"description" : "Git"}
+    let g:unite_source_menu_menus.git.command_candidates = {
+        \ "git status": "Gstatus",
+        \ "git diff"  : "Gdiff",
+    \}
+
+    let g:unite_source_menu_menus.misc = {"description": "misc"}
+    let g:unite_source_menu_menus.misc.command_candidates = {
+        \ "ycm rename"    : "YcmCompleter RefactorRename",
+        \ "ycm definition": "YcmCompleter GoToDefinition",
+        \ "ycm doc"       : "YcmCompleter GetDoc",
+        \ "edit snippets" : "UltiSnipsEdit",
+        \ "tagbar"        : "TagbarToggle",
+        \ "undotree"      : "UndotreeToggle",
+    \}
 
 call dein#add("tsukkee/unite-tag")
+
+    nnoremap <space> :Unite -start-insert tag ultisnips menu:git menu:misc
+        \ register<CR>
+    nnoremap <c-space> :Unite buffer file_rec/async jump command function
+        \ launcher<CR>
 
 call dein#add("freitass/todo.txt-vim", { "on_ft": "todo" })
 
@@ -51,12 +74,8 @@ call dein#add("mhinz/vim-startify")
     \]
 
 call dein#add("w0ng/vim-hybrid")
-call dein#add("endel/vim-github-colorscheme")
 
 call dein#add("godlygeek/tabular")
-
-" <C-n>
-call dein#add("terryma/vim-multiple-cursors")
 
 " cs'"
 call dein#add("tpope/vim-surround")
@@ -67,14 +86,13 @@ call dein#add("tpope/vim-repeat.git")
 " <leader><leader>w, <leader><leader>f..., 
 call dein#add("Lokaltog/vim-easymotion")
 
+" <A-k> <A-j>
 call dein#add("matze/vim-move")
 
 call dein#add("majutsushi/tagbar")
     let g:tagbar_width = 30
 
 call dein#add("mbbill/undotree")
-
-call dein#add("jiangmiao/auto-pairs.git")
 
 " :StackAnswers 'how to ...'
 call dein#add("james9909/stackanswers.vim")
@@ -87,7 +105,7 @@ call dein#add("scrooloose/syntastic")
     let g:syntastic_php_phpcs_args   = ["--standard=PSR2"]
     let g:syntastic_js_checkers      = ["jshint"]
 
-call dein#add("joonty/vdebug", { "on_ft": "php" })
+call dein#add("joonty/vdebug", { "if": 0 }) " +python
     let g:vdebug_options = {
         \    "port" : 9000, "server" : "localhost",
         \    "timeout" : 25, "on_close" : "detach",
@@ -139,9 +157,6 @@ call dein#add("mattn/emmet-vim", { "on_ft": "html" })
     let g:user_emmet_expandabbr_key = "<c-e>"
 
 call dein#add("Valloric/MatchTagAlways", { "on_ft": ["html", "xml"] })
-
-" js
-call dein#add("moll/vim-node", { "on_ft": "javascript" })
 
 " vcs tools
 call dein#add("vim-scripts/vcscommand.vim")

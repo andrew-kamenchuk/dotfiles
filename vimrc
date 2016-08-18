@@ -219,6 +219,11 @@ augroup END
 
 autocmd vimrc FileType vim setlocal keywordprg=:help
 
+augroup vimrc
+    autocmd FileType python setlocal completeopt+=preview
+    autocmd FileType javascript setlocal completeopt+=preview
+augroup END
+
 iabbrev @@ andrew.kamenchuk@gmail.com
 
 if filereadable(expand("$HOME/.vimrc.local"))
