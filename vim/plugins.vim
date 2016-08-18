@@ -28,24 +28,27 @@ call dein#add("Shougo/unite.vim")
     let g:unite_source_menu_menus.git.command_candidates = {
         \ "git status": "Gstatus",
         \ "git diff"  : "Gdiff",
+        \ "git add"   : "Gwrite",
     \}
 
     let g:unite_source_menu_menus.misc = {"description": "misc"}
     let g:unite_source_menu_menus.misc.command_candidates = {
-        \ "ycm rename"    : "YcmCompleter RefactorRename",
+        \ "ycm rename"    : "YcmCompleter RefactorRename ",
         \ "ycm definition": "YcmCompleter GoToDefinition",
         \ "ycm doc"       : "YcmCompleter GetDoc",
         \ "edit snippets" : "UltiSnipsEdit",
         \ "tagbar"        : "TagbarToggle",
         \ "undotree"      : "UndotreeToggle",
+        \ "marks"         : "marks",
+        \ "jumps"         : "Unite jump",
     \}
 
-call dein#add("tsukkee/unite-tag")
-
-    nnoremap <space> :Unite -start-insert tag ultisnips menu:git menu:misc
+    nnoremap <space> :Unite -start-insert tag ultisnips menu:misc
         \ register<CR>
-    nnoremap <c-space> :Unite buffer file_rec/async jump command function
-        \ launcher<CR>
+    nnoremap <c-space> :Unite -start-insert buffer file_rec/async bookmark
+        \ command function launcher<CR>
+
+call dein#add("tsukkee/unite-tag")
 
 call dein#add("freitass/todo.txt-vim", { "on_ft": "todo" })
 
