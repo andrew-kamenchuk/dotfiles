@@ -1,5 +1,3 @@
-set nocompatible
-
 let s:plugindir = expand("$HOME/.vim/plugins")
 
 let s:deindir   = s:plugindir . "/repos/github.com/Shougo/dein.vim"
@@ -31,22 +29,7 @@ call dein#add("Shougo/unite.vim")
         \ "git add"   : "Gwrite",
     \}
 
-    let g:unite_source_menu_menus.misc = {"description": "misc"}
-    let g:unite_source_menu_menus.misc.command_candidates = {
-        \ "ycm rename"    : "YcmCompleter RefactorRename ",
-        \ "ycm definition": "YcmCompleter GoToDefinition",
-        \ "ycm doc"       : "YcmCompleter GetDoc",
-        \ "edit snippets" : "UltiSnipsEdit",
-        \ "tagbar"        : "TagbarToggle",
-        \ "undotree"      : "UndotreeToggle",
-        \ "marks"         : "marks",
-        \ "jumps"         : "Unite jump",
-    \}
-
-    nnoremap <space> :Unite -start-insert tag ultisnips menu:misc
-        \ register<CR>
-    nnoremap <c-space> :Unite -start-insert buffer file_rec/async bookmark
-        \ command function launcher<CR>
+nnoremap <c-space> :Unite -start-insert file_rec/async:! command<CR>
 
 call dein#add("tsukkee/unite-tag")
 
@@ -128,6 +111,8 @@ call dein#add("SirVer/ultisnips")
     let g:UltiSnipsEditSplit="horizontal"
     let g:UltiSnipsSnippetsDir="~/.vim/snippets/UltiSnips"
 
+execute "set runtimepath+=" . expand("$HOME/.vim/snippets")
+
 " completion
 call dein#add("Valloric/YouCompleteMe", { "build": "./install.py --clang-completer" })
     let g:ycm_collect_identifiers_from_tags_files = 1
@@ -156,7 +141,7 @@ call dein#add("alvan/vim-php-manual", { "on_ft": "php" })
 call dein#add("gorodinskiy/vim-coloresque", { "on_ft": "css" })
 
 " html
-call dein#add("mattn/emmet-vim", { "on_ft": "html" })
+call dein#add("mattn/emmet-vim", { "on_ft": ["html", "xml"] })
     let g:user_emmet_expandabbr_key = "<c-e>"
 
 call dein#add("Valloric/MatchTagAlways", { "on_ft": ["html", "xml"] })
@@ -179,8 +164,6 @@ call dein#add("mattn/gist-vim")
 call dein#add("sheerun/vim-polyglot")
 
 call dein#end()
-
-filetype plugin indent on
 
 if dein#check_install()
     call dein#install()

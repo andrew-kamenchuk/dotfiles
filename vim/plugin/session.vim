@@ -10,4 +10,3 @@ endif
 
 nnoremap <leader>s :call sessions#saveSession(g:sessions_path)<CR>
 nnoremap <leader>l :call sessions#loadSession(g:sessions_path)<CR>
-nnoremap <leader>r :call sessions#removeSession(g:sessions_path)<CR>

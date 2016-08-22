@@ -13,7 +13,7 @@ augroup END
 
 source $HOME/.vim/plugins.vim
 
-execute "set runtimepath+=" . expand("$HOME/.vim/snippets")
+filetype plugin indent on
 
 let s:fzfdir = expand("$ZDOTDIR/.zplug/repos/junegunn/fzf")
 
@@ -126,7 +126,7 @@ set expandtab tabstop=4 softtabstop=4 shiftwidth=4 smarttab
 
 set autoindent
 
-set paste
+" set paste
 set pastetoggle=
 
 set wrap
