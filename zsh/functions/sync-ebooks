@@ -15,6 +15,6 @@ for device (/media/$USER/*(/N)); do
         "$HOME/Documents/Library/" "$device/Library"
 done
 
-[ -z "$device" ] && echo "Nothing connected!"
+[ -z "$device" ] && echo "Nothing connected!" || true
 
 # vim: syntax=zsh

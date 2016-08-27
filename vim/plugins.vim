@@ -29,7 +29,7 @@ call dein#add("Shougo/unite.vim")
         \ "git add"   : "Gwrite",
     \}
 
-nnoremap <c-space> :Unite -start-insert file_rec/async:! command<CR>
+nnoremap <space> :Unite -start-insert file_rec/async:! command<CR>
 
 call dein#add("tsukkee/unite-tag")
 

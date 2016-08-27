@@ -5,8 +5,6 @@ set secure
 
 set modeline
 
-syntax on
-
 augroup vimrc
   autocmd!
 augroup END
@@ -14,6 +12,8 @@ augroup END
 source $HOME/.vim/plugins.vim
 
 filetype plugin indent on
+
+syntax on
 
 let s:fzfdir = expand("$ZDOTDIR/.zplug/repos/junegunn/fzf")
 
