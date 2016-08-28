@@ -66,7 +66,7 @@ set undolevels=200
 set t_Co=256
 
 set noerrorbells visualbell t_vb=
-" autocmd vimrc GUIEnter * set visualbell t_vb=
+autocmd vimrc GUIEnter * set visualbell t_vb=
 
 set confirm
 
