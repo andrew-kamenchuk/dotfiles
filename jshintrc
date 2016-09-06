@@ -47,5 +47,10 @@
     "scripturl" : true,
     "supernew"  : false,
     "validthis" : true,
-    "withstmt"  : false
+    "withstmt"  : false,
+
+    // Env
+    "node"    : true,
+    "browser" : true,
+    "devel"   : true
 }

@@ -46,8 +46,8 @@ call dein#add("mhinz/vim-startify")
     let g:startify_session_dir = expand("$HOME/.vim/sessions")
     let g:startify_list_order = [
         \ [' Sessions: '], 'sessions',
-        \ [' Bookmarks: '], 'bookmarks', 
-        \ [' Commands: '], 'commands', 
+        \ [' Bookmarks: '], 'bookmarks',
+        \ [' Commands: '], 'commands',
         \ [' MRU: '], 'files',
         \ [' MRU Current directory: '], 'dir'
     \]
@@ -69,7 +69,7 @@ call dein#add("tpope/vim-surround")
 " to repeat surrond
 call dein#add("tpope/vim-repeat.git")
 
-" <leader><leader>w, <leader><leader>f..., 
+" <leader><leader>w, <leader><leader>f...,
 call dein#add("Lokaltog/vim-easymotion")
 
 " <A-k> <A-j>
@@ -138,7 +138,7 @@ autocmd vimrc FileType php setlocal omnifunc=phpcomplete#CompletePHP
 call dein#add("alvan/vim-php-manual", { "on_ft": "php" })
 
 " css
-call dein#add("gorodinskiy/vim-coloresque", { "on_ft": "css" })
+call dein#add("gorodinskiy/vim-coloresque", { "on_ft": ["css", "less"] })
 
 " html
 call dein#add("mattn/emmet-vim", { "on_ft": ["html", "xml"] })
