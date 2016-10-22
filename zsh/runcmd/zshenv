@@ -25,4 +25,4 @@ typeset -gU cdpath fpath mailpath path
 # JAVA_HOME latest jdk available
 export JAVA_HOME="$(echo /usr/lib/jvm/jdk*(/Nn[-1]))"
 
-[ -f "${ZDOTDIR:-$HOME}/.zprofile.local" ] && source "${ZDOTDIR:-$HOME}/.zprofile.local" || true
+[ -f "${ZDOTDIR:-$HOME}/.zshenv.local" ] && source "${ZDOTDIR:-$HOME}/.zshenv.local" || true
