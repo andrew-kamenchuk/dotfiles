@@ -1,6 +1,28 @@
 # zshenv
 # .zshenv is sourced on ALL invocations of the shell, unless -f option is set
 
-if [[ $SHLVL == 1 && ! -o LOGIN && -f "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-    source "${ZDOTDIR:-$HOME}/.zprofile"
+# EDITORS:
+
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+
+# Language
+
+if [[ -z "$LANG" ]]; then
+  export LANG="en_US.UTF-8"
 fi
+
+# Path
+path=(
+    "$HOME/.bin"
+    $path
+)
+
+# Ensure path arrays do not contain duplicates.
+typeset -gU cdpath fpath mailpath path
+
+# JAVA_HOME latest jdk available
+export JAVA_HOME="$(echo /usr/lib/jvm/jdk*(/Nn[-1]))"
+
+[ -f "${ZDOTDIR:-$HOME}/.zprofile.local" ] && source "${ZDOTDIR:-$HOME}/.zprofile.local" || true
