@@ -29,7 +29,7 @@ source "$ZPLUG_HOME/init.zsh"
 zplug "zplug/zplug"
 
 # local
-zplug "${ZSHDIR}/zshrc.d", from:local, use:"*.zsh", nice:15
+zplug "${ZSHDIR}/zshrc.d", from:local, use:"*.zsh", defer:2
 
 # nvm
 zplug "creationix/nvm", \
@@ -43,7 +43,7 @@ zplug "soimort/translate-shell", at:"develop"
 zplug "junegunn/fzf", \
     hook-build:"./install --no-update-rc --key-bindings --completion", \
     use: "$HOME/.fzf.zsh", \
-    nice:16
+    defer:3
 
 # z
 zplug "rupa/z", use:"z.sh"
@@ -54,13 +54,13 @@ zplug "asciinema/asciinema", from:gh-r, as:command
 # oh-my-zsh plugins
 zplug "plugins/jump", from:oh-my-zsh
 zplug "plugins/composer", from:oh-my-zsh
-zplug "plugins/gulp", from:oh-my-zsh, nice:10
+zplug "plugins/gulp", from:oh-my-zsh, defer:1
 
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
-zplug "zsh-users/zsh-history-substring-search", nice:11
+zplug "zsh-users/zsh-syntax-highlighting", defer:1
+zplug "zsh-users/zsh-history-substring-search", defer:2
 
-zplug "lukechilds/zsh-better-npm-completion", nice:10
+zplug "lukechilds/zsh-better-npm-completion", defer:1
 
 zplug check || zplug install
 
