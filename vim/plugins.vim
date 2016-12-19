@@ -115,7 +115,7 @@ call dein#add("SirVer/ultisnips")
 execute "set runtimepath+=" . expand("$HOME/.vim/snippets")
 
 " completion
-call dein#add("Valloric/YouCompleteMe", { "build": "./install.py --clang-completer" })
+call dein#add("Valloric/YouCompleteMe", { "build": "./install.py --clang-completer --tern-completer" })
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:ycm_auto_trigger = 1
     let g:ycm_autoclose_preview_window_after_completion = 1
