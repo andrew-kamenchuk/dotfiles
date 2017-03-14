@@ -84,13 +84,13 @@ call dein#add("mbbill/undotree")
 call dein#add("james9909/stackanswers.vim")
 
 call dein#add("scrooloose/syntastic")
-    let g:syntastic_enable_signs       = 1
-    let g:syntastic_check_on_open      = 1
-    let g:syntastic_aggregate_errors   = 1
-    let g:syntastic_php_checkers       = ["php", "phpcs"]
-    let g:syntastic_php_phpcs_args     = ["--standard=PSR2"]
-    let g:syntastic_js_checkers        = ["jshint"]
-    let g:syntastic_python_python_exec = "/usr/bin/python3"
+    let g:syntastic_enable_signs        = 1
+    let g:syntastic_check_on_open       = 1
+    let g:syntastic_aggregate_errors    = 1
+    let g:syntastic_php_checkers        = ["php", "phpcs"]
+    let g:syntastic_php_phpcs_args      = ["--standard=PSR2"]
+    let g:syntastic_javascript_checkers = ["eslint"]
+    let g:syntastic_python_python_exec  = "/usr/bin/python3"
 
 call dein#add("joonty/vdebug", { "if": 0 }) " +python
     let g:vdebug_options = {
