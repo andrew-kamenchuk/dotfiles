@@ -173,7 +173,7 @@ set iskeyword+=_,$,@,%,#
 set ruler
 
 " vertical rulers:
-set colorcolumn=+1
+set colorcolumn=+1,80
 
 set laststatus=2
 
