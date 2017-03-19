@@ -143,13 +143,13 @@ module.exports = {
         "radix": "error",
         "require-await": "off",
         "vars-on-top": "error",
-        "wrap-iife": ["error", "outside", { functionPrototypeMethods: true }],
+        "wrap-iife": ["error", "any", { functionPrototypeMethods: true }],
         "yoda": ["error", "always", {
             onlyEquality: true,
         }],
 
         // strict:
-        "strict": ["error", "safe"],
+        "strict": ["off", "safe"],
 
         // variables:
         "init-declaration": "off",
@@ -164,7 +164,7 @@ module.exports = {
         "no-undefined": "off",
         "no-unused-vars": ["error", {
             vars: "all",
-            args: "all", // "after-used",
+            args: "after-used",
             ignoreRestSiblings: true,
             caughtErrors: "none",
         }],
@@ -176,7 +176,7 @@ module.exports = {
 
         // node
         "callback-return": ["warn", ["callback", "cb"]],
-        "global-require": "warn",
+        "global-require": "off",
         "handle-callback-err": "off",
         "no-mixed-requires": "off",
         "no-new-require": "error",
