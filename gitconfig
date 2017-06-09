@@ -31,3 +31,6 @@
     lg = "!git --no-pager log --color --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %C(bold blue)<%an>%Creset' --abbrev-commit"
     ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
     commit-rand = "!git commit -m\"$(curl -Ls http://whatthecommit.com/index.txt)\""
+    
+[include]
+    path = ~/.gitconfig.local
