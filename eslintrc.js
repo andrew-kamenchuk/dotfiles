@@ -337,7 +337,7 @@ module.exports = {
         "object-shorthand": ["error", "always", {
             avoidQuotes: true,
         }],
-        "prefer-arrow-callback": "error",
+        "prefer-arrow-callback": "off",
         "prefer-const": "error",
         "prefer-destructuring": ["off", {
             array: false,
